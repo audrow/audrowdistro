@@ -1,4 +1,6 @@
-is_distro_in_sync_hold:
-  humble: true
-  iron: true
-  rolling: false
+- distro: humble
+  in_sync_hold: true
+- distro: iron
+  in_sync_hold: true
+- distro: rolling
+  in_sync_hold: false
