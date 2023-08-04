@@ -1,0 +1,23 @@
+name: Run sync bot
+
+on: [push, pull_request]
+
+jobs:  
+  run-sync-hold-bot:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_REPO_ORG: ${{ github.repository_owner }}
+      GITHUB_REPO_NAME: ${{ github.repository }}
+      GITHUB_REPO_BRANCH_NAME: ${{ github.base_ref }}
+      GITHUB_REPO_PATH_TO_SYNC_STATUS: "sync_hold.yaml"
+      GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.GITHUB_PERSONAL_ACCESS_TOKEN }}
+
+    steps:
+    - name: Clone rosdistro-sync-bot
+      uses: actions/checkout@v2
+      with:
+        repository: audrow/rosdistro-sync-bot
+    - name: Build
+      run: cargo build --verbose 
+    - name: Run
+      run: cargo run
