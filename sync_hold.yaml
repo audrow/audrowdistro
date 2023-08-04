@@ -1,0 +1,4 @@
+is_distro_in_sync_hold:
+  humble: true
+  iron: true
+  rolling: false
